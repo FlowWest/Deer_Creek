@@ -5,8 +5,11 @@ library(readxl)
 library(stringr)
 library()
 
+setwd("U:/Active Projects/Deer Creek/Project_Management/Schedule/schedule_revised")
+getwd()
+
 #read in csv of task data
-t4 <- read_csv("C:/Users/Anna/Desktop/DeerCreek/schedule_revised/task4_data.csv")
+t4 <- read_csv("task4_data.csv")
 
 #create Gantt chart
 t4 %>%
