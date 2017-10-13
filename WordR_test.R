@@ -1,7 +1,6 @@
-install.packages('WordR')
-install.packages('ReporteRs')
-install.packages('JDK')
 install.packages('rJava')
+install.packages('ReporteRs')
+install.packages('WordR')
 
 library(WordR)
 library(ReporteRs)
