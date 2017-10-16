@@ -1,3 +1,5 @@
+#for installation of rJava to work, need to install most recent version of
+#Java from here http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 install.packages('rJava')
 install.packages('ReporteRs')
 install.packages('WordR')
@@ -16,10 +18,10 @@ setwd("U:/Active Projects/Deer Creek/Project_Management/Schedule/schedule_revise
 getwd()
 
 #read in csv of task data
-t4 <- read_csv("task4_data.csv")
+T4 <- read_csv("task4_data.csv")
 
 #create Gantt chart
-t4Gantt <- t4 %>%
+T4gantt <- t4 %>%
   mutate(Start = mdy(Start), End = Start + days(`Duration (days)`)) %>%
   gather(type, date, -ID:-`Duration (days)`, -Predecessors) %>% 
   mutate(date = as_date(as.numeric(date)),
@@ -34,10 +36,10 @@ t4Gantt <- t4 %>%
   theme(legend.position = 'none',
         text = element_text(size = 12))
 
-t4Gantt
+T4gantt
 
 #Code not working yet. having a java installation error.
 addPlots(
-  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/BaselineMonitoring_20171012.docx", 
-  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/BaselineMonitoring_20171012.docx", 
-  t4Gantt, height=4, bookmark = 'p1')
+  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171012_BaselineMonitoring_Draft-WordRtest.docx", 
+  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171016_BaselineMonitoring.docx", 
+  Plots = print(T4gantt), bookmark = 'T4gantt')
