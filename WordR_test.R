@@ -18,16 +18,18 @@ setwd("U:/Active Projects/Deer Creek/Project_Management/Schedule/schedule_revise
 getwd()
 
 #read in csv of task data
-T4 <- read_csv("task4_data.csv")
+t4raw <- read_csv("task4_data.csv")
 
-#create Gantt chart
-T4gantt <- t4 %>%
+#organize csv data for Gantt chart
+t4 <- t4raw %>%
   mutate(Start = mdy(Start), End = Start + days(`Duration (days)`)) %>%
   gather(type, date, -ID:-`Duration (days)`, -Predecessors) %>% 
   mutate(date = as_date(as.numeric(date)),
          task = str_detect(`Task Name`, 'Task')) %>% 
-  arrange(desc(ID)) %>% 
-  ggplot(aes(x = date, y = fct_inorder(`Task Name`), color = task)) +
+  arrange(desc(ID)) 
+
+#gantt chart plot
+t4gantt <-  ggplot(t4, aes(x = date, y = fct_inorder(`Task Name`), color = task)) +
   geom_line(size = 3) +
   theme_minimal() +
   scale_x_date(date_breaks = '1 month', date_labels = '%b', position = 'top') +
@@ -36,10 +38,12 @@ T4gantt <- t4 %>%
   theme(legend.position = 'none',
         text = element_text(size = 12))
 
-T4gantt
+print(t4gantt)
 
-#Code not working yet. having a java installation error.
+#Interesting syntax here for assigning plots to word bookmarks
+#Plot gets inserted, but not looking like it should. Need to figure out formatting.
+Plots <- list(t4gantt = function() print(t4gantt))
+  
 addPlots(
   "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171012_BaselineMonitoring_Draft-WordRtest.docx", 
-  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171016_BaselineMonitoring.docx", 
-  Plots = print(T4gantt), bookmark = 'T4gantt')
+  "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171016_BaselineMonitoring.docx", Plots)
