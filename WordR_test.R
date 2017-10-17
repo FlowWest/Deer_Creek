@@ -41,7 +41,8 @@ t4gantt <-  ggplot(t4, aes(x = date, y = fct_inorder(`Task Name`), color = task)
 print(t4gantt)
 
 #Interesting syntax here for assigning plots to word bookmarks
-#Plot gets inserted, but not looking like it should. Need to figure out formatting.
+#Plot gets inserted, but not looking like it should (clipped). 
+#Need to figure out formatting.
 Plots <- list(t4gantt = function() print(t4gantt))
   
 addPlots(
