@@ -1,0 +1,10 @@
+ID,Task Name,Duration (days),Start,Predecessors
+33,Task 4. Baseline Monitoring,462,8/2/2017,
+34, 4.1 Project Baseline Monitoring Plan,31,9/15/2017,1
+35, 4.2 Lidar and Aerial Photography Survey,135,10/11/2017,
+36,4.2.1 Select Contractor,30,10/11/2017,35
+37,4.2.2 Perform Survey,100,11/15/2017,37
+38, 4.3 Geomorphic Baseline Survey,180,11/1/2017,35
+39, 4.4 Riparian and floodplain habitat baseline survey,180,11/1/2017,35
+40, 4.5 Channel hydraulic modeling and habitat baseline quantification,180,5/11/2018,"39, 40"
+41,"4.6 Integration, publication, and visualization of all baseline monitoring data and relevant historical data",462,8/2/2017,
