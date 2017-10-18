@@ -2,8 +2,27 @@
 title: "Baseline Monitoring Plan"
 author: "FlowWest"
 date: "October 11, 2017"
-output: pdf_document
+output: 
+  word_document:
+    reference_docx: U:/Templates/WordDocs/ReportTemplate.docx
+
 ---
+
+
+#make a table
+
+```{r eval=TRUE, echo=FALSE}
+library(dplyr)
+# extract a subset of the mtcars data
+df <- mtcars %>%
+    mutate(make_model = row.names(mtcars)) %>%
+    filter(cyl == 4) %>%    
+    select(make_model, mpg, wt) %>%
+    mutate(wt = wt*1000) %>%
+    arrange(make_model) 
+    
+```
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
