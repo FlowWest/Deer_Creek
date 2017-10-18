@@ -38,12 +38,14 @@ t4gantt <-  ggplot(t4, aes(x = date, y = fct_inorder(`Task Name`), color = task)
   theme(legend.position = 'none',
         text = element_text(size = 12))
 
-print(t4gantt)
+mtcars1 <- ggplot(mtcars, aes(x = wt, y = hp, color = cyl)) +
+  geom_point(size = 2)
+mtcars1
 
 #Interesting syntax here for assigning plots to word bookmarks
 #Plot gets inserted, but not looking like it should (clipped). 
 #Need to figure out formatting.
-Plots <- list(t4gantt = function() print(t4gantt))
+Plots <- list(t4gantt = function() print(t4gantt), mtcars1 = function() print(mtcars1))
   
 addPlots(
   "U:/Active Projects/Deer Creek/Deliverables/BaselineMonitoring/20171012_BaselineMonitoring_Draft-WordRtest.docx", 
